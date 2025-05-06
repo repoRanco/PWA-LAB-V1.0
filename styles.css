@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.app-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.grid-cell {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.grid-cell::after {
+    content: attr(data-cell-number);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+#canvas {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.capture-btn, .switch-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.capture-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.switch-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.capture-btn:hover, .switch-btn:hover {
+    transform: scale(1.05);
+}
+
+.result-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 10px;
+    }
+    .controls {
+        flex-direction: column;
+    }
+    .capture-btn, .switch-btn {
+        width: 100%;
+    }
+}
